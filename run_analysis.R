@@ -27,7 +27,7 @@ yDt <- rbind(yTrain, yTest)
 subjectDt <- rbind(subjectTrain, subjectTest)
 
 ### Remove before final commit
-print(head(xDt, 10))
+#print(head(xDt, 10))
 #print(yDt)
 #print(subjectDt)
 ### Remove before final commit
@@ -35,9 +35,30 @@ print(head(xDt, 10))
 
 
 # Step 2: Extracts only the measurements on the mean and standard deviation for each measurement. 
+features <- read.table("features.txt")
 
+# Replace Mean and Std Dev names
+features[,2] = gsub("-mean", "Mean", features[,2])
+features[,2] = gsub("-std", "Std", features[,2])
+features[,2] = gsub("[-()]", "", features[,2])
+
+# Retain only the needed features
+colNeeded <- grep(".*Mean.*|.*Std.*", features[,2])
+
+# subset the desired columns
+xDt <- xDt[, colNeeded]
+
+# add proper column names
+names(xDt) <- features[colNeeded, 2]
+
+# subset the desired columns
+xDt <- xDt[, colNeeded]
+
+# correct the column names
+names(xDt) <- features[colNeeded, 2]
 
 # Step 3: Uses descriptive activity names to name the activities in the data set
+
 
 
 # Step 4: Appropriately labels the data set with descriptive variable names. 
