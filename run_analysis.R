@@ -26,13 +26,6 @@ yDt <- rbind(yTrain, yTest)
 # Create dataset "Subject"
 subjectDt <- rbind(subjectTrain, subjectTest)
 
-### Remove before final commit
-#print(head(xDt, 10))
-#print(yDt)
-#print(subjectDt)
-### Remove before final commit
-
-
 
 # Step 2: Extracts only the measurements on the mean and standard deviation for each measurement. 
 features <- read.table("features.txt")
@@ -68,9 +61,16 @@ names(yDt) <- "activity"
 names(subjectDt) <- "subject"
 
 # Merge Data into singe data frame
-dt <- cbind(xDt, yDt, subjectDt)
+allData <- cbind(xDt, yDt, subjectDt)
 
 
 # Step 5: From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
+# calculate averages
+averagesDt <- allData %>%
+  group_by(activity, subject) %>%
+  summarise_each(funs(mean))
+
+# write data to file
+write.table(averagesDt, "AveragesData.txt", row.names=FALSE)
 
 
