@@ -52,12 +52,23 @@ xDt <- xDt[, colNeeded]
 names(xDt) <- features[colNeeded, 2]
 
 
-
 # Step 3: Uses descriptive activity names to name the activities in the data set
- 
+activities <- read.table("activity_labels.txt")
+
+# update values with correct activity names
+yDt[,1] <- activities[yDt[, 1], 2]
+
+# Update column name
+names(yDt) <- "activity"
 
 
 # Step 4: Appropriately labels the data set with descriptive variable names. 
+
+# Correct name for subject data
+names(subjectDt) <- "subject"
+
+# Merge Data into singe data frame
+dt <- cbind(xDt, yDt, subjectDt)
 
 
 # Step 5: From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
