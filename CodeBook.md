@@ -28,11 +28,17 @@ The script 'run_analysis.R' performs the data cleaning the steps in 5 steps. The
 Variables Used
 --------------
 `xTrain`, `yTrain`, `subjectTrain`, `xTest`, `yTest`, `subjectTest` are variable for data loaded from files.
+
 `xDt`, `yDt`, `subjectDt` are variables that store merged data from the variable above.
+
 `features` contains the correct names for xDt.
+
 `activities` contains activity labels loaded from file.
+
 `allData` is the variable for all the finally merged data.
+
 `averagesDt' is the variable in which summarised data is stored. It is summarised by "activity" and "subject"
+
 
 
 
