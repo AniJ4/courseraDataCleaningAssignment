@@ -58,7 +58,7 @@ xDt <- xDt[, colNeeded]
 names(xDt) <- features[colNeeded, 2]
 
 # Step 3: Uses descriptive activity names to name the activities in the data set
-
+ 
 
 
 # Step 4: Appropriately labels the data set with descriptive variable names. 
